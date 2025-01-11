@@ -6,17 +6,7 @@ import {
   Output,
 } from '@angular/core';
 
-// type User = {
-//   id: string;
-//   name: string;
-//   avatar: string;
-// }
-
-interface User  {
-  id: string;
-  name: string;
-  avatar: string;
-}
+import { type User } from './user.model';
 
 @Component({
   selector: 'app-user',
@@ -28,6 +18,7 @@ interface User  {
 export class UserComponent {
   @Input({required:true}) user!:User;
   @Output() selectedUser = new EventEmitter<string>();
+  @Input({required:true}) isSelected:boolean = false;
 
   get imagePath() {
     return './assets/users/' + this.user.avatar;
